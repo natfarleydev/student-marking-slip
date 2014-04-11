@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=0cm]{geometry}
+\usepackage{tikz}
+\usepackage{blindtext}
+\usepackage{forloop}
+
+
+% Name of the module
+\newcommand\modulename{Temperature and Matter}
+
+% Disclaimer
+\newcommand\disclaimer{The attached work which is submitted for assessment, represents my own effort. I have not copied from anyone else.}
+
+% Uncomment for sans font (except small caps)
+% \renewcommand{\familydefault}{\sfdefault}
+% \renewcommand\textsc[1]{\uppercase{#1}}
+
+\begin{document}
+
+% Size of the box we are working in
+\def\x{21}
+\def\y{6}
+
+% limits of the smaller box
+\def\xleft{3}
+\def\xright{18}
+
+
+% To make the default font very readable
+\large
+
+% a little space beforeo the first slip
+\linespread{0}
+% For loop is for multiple slips
+\newcounter{iterator}
+\forloop{iterator}{1}{\value{iterator}<6}{%
+  \noindent\begin{tikzpicture}[y=-0.925cm]
+    \linespread{0.95}
+    \draw [white] (0,0) -- (\x,\y); % the dimensions of this box
+    \draw [dashed] (1.5,0) -- (1.5,\y) node [midway,sloped,above] {\footnotesize \textsc{Staple twice to the left of this line}};
+    \draw (\x/2,0.5) node  {\large Physics Problem Sheet};
+    \draw (\x/2,1.05) node  {\huge \textsc{\modulename}};
+    % beware: magic numbers here
+    \draw (\x/2,2.05) node {\parbox[c][2\baselineskip][t]{15cm}{\disclaimer}};
+    \draw (\x/2,3.2) node {\parbox[c][2\baselineskip][t]{15cm}{Your name (\textsc{block capitals})\dotfill}};
+    \draw (\x/2,4.2) node {\parbox[c][2\baselineskip][t]{15cm}{Signature\dotfill}};
+    \draw (\x/2,5.2) node {%
+      \parbox[c][2\baselineskip][t]{9.2cm}{Personal tutor\dotfill\hspace*{1ex}}%
+      \parbox[c][2\baselineskip][t]{5.8cm}{Date \dotfill}
+    };
+    \draw (\xright+1.5+0.4,\y/2+0.4) node{\Huge 10};
+    \draw (\xright+1.5-0.7,\y/2+0.7) -- (\xright+1.5+0.7,\y/2-0.7);
+    \draw (\xright+1.5,\y/2+1.1) node {\Large \textsc{total}};
+
+    \draw [loosely dotted] (0,\y+0.15) -- (\x,\y+0.15);
+    \draw [loosely dotted] (0,0-0.15) -- (\x,0-0.15);
+    % \draw [loosely dotted] (0,0) -- (\x,0);
+  \end{tikzpicture}\\[-0.05cm]
+}%
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
